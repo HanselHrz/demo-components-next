@@ -1,15 +1,21 @@
-import { Button, ButtonProps } from "lynx-ui-demo-components";
+"use client";  // Indica que este componente se ejecuta en el cliente
 
-export default function Home() {
-  const variants: ButtonProps["variant"][] = ["default", "primary", "success", "danger", "warning"];
+import { useRouter } from 'next/navigation';
+import { Button } from 'lynx-ui-demo-components';
+
+export default function Page() {
+  const router = useRouter();
+
+  const handleNavigation = () => {
+    router.push('/SpecificComponents');
+  };
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1 className="text-2xl font-bold"> Prueba libreria de componentes</h1>
-      {variants.map(variant => (
-        <Button key={variant} variant={variant}>
-          {variant}
-        </Button>
-      ))}
-    </main>
+    <>
+      <h1 className="text-2xl font-bold">Prueba de Componentes Específicos</h1>
+      <Button variant="primary" className="mt-10" onClick={handleNavigation}>
+        Ver Componentes Específicos
+      </Button>
+    </>
   );
 }
